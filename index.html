@@ -1,10 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixela Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-$END$
+<div class="container">
+  <h1>Pixela Dashboard</h1>
+
+  <!-- Section d'authentification -->
+  <div id="authSection" class="section">
+    <div id="loginForm"><!--formulaire de connexion -->
+      <h2>Connexion</h2>
+      <div class="form-group">
+        <input type="text" id="loginUsername" placeholder="Nom d'utilisateur">
+        <input type="password" id="loginToken" placeholder="Token">
+        <button id="loginBtn">Se connecter</button>
+      </div>
+    </div>
+
+    <div id="signupForm"><!--formulaire d'inscription -->
+      <h2>Créer un compte</h2>
+      <div class="form-group">
+        <input type="text" id="signupUsername" placeholder="Nom d'utilisateur">
+        <input type="password" id="signupToken" placeholder="Token">
+        <div class="terms-container">
+          <input type="checkbox" id="acceptTerms">
+          <label for="acceptTerms">J'accepte les termes et conditions et j'ai plus de 18 ans</label>
+        </div>
+        <button id="signupBtn">S'inscrire</button><!--permet d'envoyer des informations du formulaire -->
+      </div>
+    </div>
+  </div>
+
+ <!--Tableau de bord utilisateur -->
+  <div id="dashboardSection" class="hidden">
+    <div class="section">
+      <h2>Bienvenue, <span id="userDisplay"></span> !</h2>
+      <button id="logoutBtn">Se déconnecter</button>
+    </div>
+
+  <!--cette section permet de créer des nouveaux graphes -->
+    <div class="section">
+      <h2>Créer un nouveau graphique</h2>
+      <div class="form-group">
+        <input type="text" id="graphId" placeholder="ID du graphique">
+        <input type="text" id="graphName" placeholder="Nom du graphique">
+        <!-- Menu déroulant afin de choisir l'unité du graphique -->
+        <select id="graphUnit">
+          <option value="Minute">Minute</option>
+          <option value="Hour">Heure</option>
+          <option value="Day">Jour</option>
+          <option value="Week">Semaine</option>
+        </select>
+        <!-- pour choisir le type de données du graphe -->
+        <select id="graphType">
+          <option value="int">Entier</option>
+          <option value="float">Flottant</option>
+        </select>
+        <select id="graphColor">
+          <option value="shibafu">Vert</option>
+          <option value="momiji">Rouge</option>
+          <option value="sora">Bleu</option>
+          <option value="ichou">Jaune</option>
+          <option value="ajisai">Violet</option>
+          <option value="kuro">Noir</option>
+        </select>
+        <!-- Boutton pour créer le graphe -->
+        <button id="createGraphBtn">Créer le graphique</button>
+      </div>
+    </div>
+
+    <!-- liste des graphes de l'utilisateur-->
+    <div class="section">
+      <h2>Vos graphiques</h2>
+      <ul id="graphsList"></ul>
+    </div>
+
+    <!-- Section pour ajouter une pixel au graphe -->
+    <div class="section">
+      <h2>Ajouter une valeur</h2>
+      <div class="form-group">
+        <select id="pixelGraphSelect"></select>
+        <!--  choisir la date du pixel -->
+        <input type="date" id="pixelDate">
+        <input type="number" id="pixelQuantity" placeholder="Quantité">
+        <!-- Bouton pour ajouter le pixel -->
+        <button id="addPixelBtn">Ajouter</button>
+      </div>
+    </div>
+
+    <!-- affichage d'un graphe spécifique -->
+    <div class="section">
+      <h2>Affichage du graphique</h2>
+      <!--  afficher l'image du graphique -->
+      <div id="graphDisplay" class="graph-container"></div>
+    </div>
+  </div>
+  <!-- afficher des messages (succès ou erreurs) -->
+  <div id="messageArea"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
